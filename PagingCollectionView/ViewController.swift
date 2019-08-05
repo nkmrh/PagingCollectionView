@@ -18,6 +18,8 @@ final class ViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        collectionView.isPagingEnabled = true
+
         let flowLayout = collectionViewLayout as! FlowLayout
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = cellSize
