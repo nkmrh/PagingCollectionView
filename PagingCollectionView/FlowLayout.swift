@@ -2,8 +2,6 @@ import UIKit
 
 final class FlowLayout: UICollectionViewFlowLayout {
 
-    private var layoutAttributesForPaging: [UICollectionViewLayoutAttributes]?
-
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return proposedContentOffset }
 
