@@ -6,14 +6,7 @@ final class FlowLayout: UICollectionViewFlowLayout {
 
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return proposedContentOffset }
-
-        let expansionMargin = sectionInset.left + sectionInset.right
-        let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - expansionMargin,
-                                         y: 0,
-                                         width: collectionView.bounds.width + (expansionMargin * 2),
-                                         height: collectionView.bounds.height)
-        guard let targetAttributes = layoutAttributesForElements(in: expandedVisibleRect)?
-            .sorted(by: { $0.frame.minX < $1.frame.minX }) else { return proposedContentOffset }
+        guard let targetAttributes = layoutAttributesForPaging else { return proposedContentOffset }
 
         let nextAttributes: UICollectionViewLayoutAttributes?
         if velocity.x == 0 {
@@ -46,5 +39,17 @@ final class FlowLayout: UICollectionViewFlowLayout {
             return abs(distance) < abs(result.distance) ? (attributes, distance) : result
         }
         return result.attributes
+    }
+
+    // UIScrollViewDelegate scrollViewWillBeginDragging から呼ぶ
+    func prepareForPaging() {
+        // 1ページずつページングさせるために、あらかじめ表示されている attributes の配列を取得しておく
+        guard let collectionView = collectionView else { return }
+        let expansionMargin = sectionInset.left + sectionInset.right
+        let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - expansionMargin,
+                                         y: 0,
+                                         width: collectionView.bounds.width + (expansionMargin * 2),
+                                         height: collectionView.bounds.height)
+        layoutAttributesForPaging = layoutAttributesForElements(in: expandedVisibleRect)?.sorted { $0.frame.minX < $1.frame.minX }
     }
 }

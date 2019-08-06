@@ -41,6 +41,11 @@ final class ViewController: UICollectionViewController {
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let collectionView = scrollView as! UICollectionView
+        (collectionView.collectionViewLayout as! FlowLayout).prepareForPaging()
+    }
+
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection _: Int) -> CGSize {
         return headerSize
     }
