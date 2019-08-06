@@ -7,6 +7,6 @@ final class Cell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.cornerRadius = 30
+        layer.cornerRadius = 20
     }
 }

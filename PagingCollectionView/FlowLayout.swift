@@ -1,56 +1,37 @@
 import UIKit
 
 final class FlowLayout: UICollectionViewFlowLayout {
-    private enum Swipe {
-        case none
-        case left
-        case right
-
-        init(velocity: CGPoint) {
-            if velocity.x == 0 {
-                self = .none
-            } else if velocity.x > 0 {
-                self = .left
-            } else {
-                self = .right
-            }
-        }
-    }
 
     private var layoutAttributesForPaging: [UICollectionViewLayoutAttributes]?
 
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return proposedContentOffset }
+        guard let targetAttributes = layoutAttributesForPaging else { return proposedContentOffset }
 
-        guard let targetAttributes = layoutAttributesForPaging else {
-            return proposedContentOffset
-        }
-
-        // ユーザーがどちらにスクロールしたかによって処理を変える
         let nextAttributes: UICollectionViewLayoutAttributes?
-        let swipe = Swipe(velocity: velocity)
-        switch swipe {
-        case .none:
-            // 画面中央に一番近いセルの attributes を取得する
+        if velocity.x == 0 {
+            // スワイプせずに指を離した場合は、画面中央から一番近い要素を取得する
             nextAttributes = layoutAttributesForNearbyCenterX(in: targetAttributes, collectionView: collectionView)
-        case .left:
+        } else if velocity.x > 0 {
+            // 左スワイプの場合は、最後の要素を取得する
             nextAttributes = targetAttributes.last
-        case .right:
+        } else {
+            // 右スワイプの場合は、先頭の要素を取得する
             nextAttributes = targetAttributes.first
         }
-
-        guard let attributes = nextAttributes else {
-            return proposedContentOffset
-        }
+        guard let attributes = nextAttributes else { return proposedContentOffset }
 
         if attributes.representedElementKind == UICollectionView.elementKindSectionHeader {
+            // ヘッダーの場合は先頭の座標を返す
             return CGPoint(x: 0, y: collectionView.contentOffset.y)
         } else {
+            // 画面左端からセルのマージンを引いた座標を返し、画面中央に表示されるようにする
             let cellLeftMargin = (collectionView.bounds.width - attributes.bounds.width) * 0.5
             return CGPoint(x: attributes.frame.minX - cellLeftMargin, y: collectionView.contentOffset.y)
         }
     }
 
+    // 画面中央に一番近いセルの attributes を取得する
     private func layoutAttributesForNearbyCenterX(in attributes: [UICollectionViewLayoutAttributes], collectionView: UICollectionView) -> UICollectionViewLayoutAttributes? {
         let screenCenterX = collectionView.contentOffset.x + collectionView.bounds.width * 0.5
         let result = attributes.reduce((attributes: nil as UICollectionViewLayoutAttributes?, distance: CGFloat.infinity)) { result, attributes in
@@ -62,7 +43,7 @@ final class FlowLayout: UICollectionViewFlowLayout {
 
     // UIScrollViewDelegate scrollViewWillBeginDragging から呼ぶ
     func prepareForPaging() {
-        // 表示されているattributesを取得しておく
+        // 1ページずつページングさせるために、あらかじめ表示されている attributes の配列を取得しておく
         guard let collectionView = collectionView else { return }
         let expansionMargin = sectionInset.left + sectionInset.right
         let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - expansionMargin,
