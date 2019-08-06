@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640B309222F9498900C7607E /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B309122F9498900C7607E /* Cell.swift */; };
 		6420654922F824F4000B9639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420654822F824F4000B9639 /* AppDelegate.swift */; };
 		6420654B22F824F4000B9639 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420654A22F824F4000B9639 /* ViewController.swift */; };
 		6420654E22F824F4000B9639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420654C22F824F4000B9639 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		640B309122F9498900C7607E /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		6420654522F824F4000B9639 /* PagingCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6420654822F824F4000B9639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6420654A22F824F4000B9639 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				6420655122F824F5000B9639 /* LaunchScreen.storyboard */,
 				6420654C22F824F4000B9639 /* Main.storyboard */,
 				6420654A22F824F4000B9639 /* ViewController.swift */,
+				640B309122F9498900C7607E /* Cell.swift */,
 			);
 			path = PagingCollectionView;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6420654B22F824F4000B9639 /* ViewController.swift in Sources */,
+				640B309222F9498900C7607E /* Cell.swift in Sources */,
 				6420654922F824F4000B9639 /* AppDelegate.swift in Sources */,
 				6420655B22F82553000B9639 /* FlowLayout.swift in Sources */,
 			);

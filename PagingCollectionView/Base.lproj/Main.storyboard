@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,20 +23,51 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="zFA-lC-OaP">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="zFA-lC-OaP" customClass="Cell" customModule="PagingCollectionView" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78f-FA-6vS">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                            <color key="textColor" red="0.41176470588235292" green="0.40000000000000002" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="78f-FA-6vS" secondAttribute="trailing" id="Sbo-hU-rUX"/>
+                                    <constraint firstItem="78f-FA-6vS" firstAttribute="leading" secondItem="zFA-lC-OaP" secondAttribute="leading" id="YoP-pj-oMF"/>
+                                    <constraint firstItem="78f-FA-6vS" firstAttribute="top" secondItem="zFA-lC-OaP" secondAttribute="top" id="vpR-Rv-j1k"/>
+                                    <constraint firstAttribute="bottom" secondItem="78f-FA-6vS" secondAttribute="bottom" id="zFU-ic-Gml"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="label" destination="78f-FA-6vS" id="jOE-qR-49O"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="ZzU-TC-Bqg">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yb-Hv-5HB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" red="0.41176470590000003" green="0.40000000000000002" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="7yb-Hv-5HB" secondAttribute="trailing" id="7h5-QU-CTh"/>
+                                <constraint firstItem="7yb-Hv-5HB" firstAttribute="leading" secondItem="ZzU-TC-Bqg" secondAttribute="leading" id="GXg-ix-Mek"/>
+                                <constraint firstItem="7yb-Hv-5HB" firstAttribute="top" secondItem="ZzU-TC-Bqg" secondAttribute="top" id="Khj-eU-apC"/>
+                                <constraint firstAttribute="bottom" secondItem="7yb-Hv-5HB" secondAttribute="bottom" id="Wkj-kW-DPb"/>
+                            </constraints>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="02d-EO-tE9" id="THv-tC-d50"/>
@@ -47,7 +77,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYL-Wd-78v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="52"/>
+            <point key="canvasLocation" x="140.57971014492756" y="51.5625"/>
         </scene>
     </scenes>
 </document>

@@ -2,23 +2,21 @@ import UIKit
 
 final class ViewController: UICollectionViewController {
 
-    private let cellAspectRatio: CGFloat = 4 / 3
-
     private var cellSize: CGSize {
         let width = collectionView.bounds.width * 0.8
-        let height = width * cellAspectRatio
+        let height = width * Cell.aspectRatio
         return CGSize(width: width, height: height)
     }
 
     private var headerSize: CGSize {
-        let width = collectionView.bounds.width * 0.4
+        let width = collectionView.bounds.width * 0.6
         return CGSize(width: width, height: 0)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.isPagingEnabled = true
+        collectionView.decelerationRate = .fast
 
         let flowLayout = collectionViewLayout as! FlowLayout
         flowLayout.scrollDirection = .horizontal
@@ -29,12 +27,12 @@ final class ViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 5
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.layer.cornerRadius = 30
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
+        cell.label.text = "\(indexPath.row)"
         return cell
     }
 
@@ -44,6 +42,12 @@ final class ViewController: UICollectionViewController {
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
+
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let collectionView = scrollView as! UICollectionView
+        (collectionView.collectionViewLayout as! FlowLayout).prepareForPaging()
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return headerSize
     }
