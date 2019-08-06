@@ -5,11 +5,14 @@ final class FlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return proposedContentOffset }
 
+        // sectionInset を考慮して表示領域を拡大する
         let expansionMargin = sectionInset.left + sectionInset.right
         let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - expansionMargin,
                                          y: 0,
                                          width: collectionView.bounds.width + (expansionMargin * 2),
                                          height: collectionView.bounds.height)
+
+        // 表示領域の layoutAttributes を取得し、X座標の位置を元ににソートする
         guard let targetAttributes = layoutAttributesForElements(in: expandedVisibleRect)?
             .sorted(by: { $0.frame.minX < $1.frame.minX }) else { return proposedContentOffset }
 
