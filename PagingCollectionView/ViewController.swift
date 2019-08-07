@@ -11,7 +11,7 @@ final class ViewController: UICollectionViewController {
     }
 
     private var headerSize: CGSize {
-        let width = collectionView.bounds.width * 0.4
+        let width = collectionView.bounds.width * 0.6
         return CGSize(width: width, height: 0)
     }
     
