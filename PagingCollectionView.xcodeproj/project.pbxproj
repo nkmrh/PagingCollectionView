@@ -13,6 +13,7 @@
 		6420655022F824F5000B9639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6420654F22F824F5000B9639 /* Assets.xcassets */; };
 		6420655322F824F5000B9639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420655122F824F5000B9639 /* LaunchScreen.storyboard */; };
 		6420655B22F82553000B9639 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420655A22F82553000B9639 /* FlowLayout.swift */; };
+		6469131222FA9E9E00C8BA9A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6469131122FA9E9E00C8BA9A /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6420655222F824F5000B9639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6420655422F824F5000B9639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6420655A22F82553000B9639 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		6469131122FA9E9E00C8BA9A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				6420655122F824F5000B9639 /* LaunchScreen.storyboard */,
 				6420654C22F824F4000B9639 /* Main.storyboard */,
 				6420654A22F824F4000B9639 /* ViewController.swift */,
+				6469131122FA9E9E00C8BA9A /* Cell.swift */,
 			);
 			path = PagingCollectionView;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6420654B22F824F4000B9639 /* ViewController.swift in Sources */,
+				6469131222FA9E9E00C8BA9A /* Cell.swift in Sources */,
 				6420654922F824F4000B9639 /* AppDelegate.swift in Sources */,
 				6420655B22F82553000B9639 /* FlowLayout.swift in Sources */,
 			);

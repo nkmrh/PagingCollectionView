@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,20 +23,51 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="zFA-lC-OaP">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="zFA-lC-OaP" customClass="Cell" customModule="PagingCollectionView" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9A-SR-yG4">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                            <color key="textColor" red="0.41176470588235292" green="0.40000000000000002" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="C9A-SR-yG4" secondAttribute="bottom" id="HkO-og-6ge"/>
+                                    <constraint firstItem="C9A-SR-yG4" firstAttribute="top" secondItem="zFA-lC-OaP" secondAttribute="top" id="RZ7-FI-Qno"/>
+                                    <constraint firstItem="C9A-SR-yG4" firstAttribute="leading" secondItem="zFA-lC-OaP" secondAttribute="leading" id="WkW-z4-5XS"/>
+                                    <constraint firstAttribute="trailing" secondItem="C9A-SR-yG4" secondAttribute="trailing" id="tWP-oZ-25W"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="label" destination="C9A-SR-yG4" id="Q7T-re-TJn"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="ZzU-TC-Bqg">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzj-yA-JDe">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" red="0.41176470590000003" green="0.40000000000000002" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Vzj-yA-JDe" secondAttribute="trailing" id="CNp-uK-kI3"/>
+                                <constraint firstItem="Vzj-yA-JDe" firstAttribute="leading" secondItem="ZzU-TC-Bqg" secondAttribute="leading" id="ImV-eW-OYh"/>
+                                <constraint firstAttribute="bottom" secondItem="Vzj-yA-JDe" secondAttribute="bottom" id="YSS-8D-p8Q"/>
+                                <constraint firstItem="Vzj-yA-JDe" firstAttribute="top" secondItem="ZzU-TC-Bqg" secondAttribute="top" id="hUM-Eb-ZOf"/>
+                            </constraints>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="02d-EO-tE9" id="THv-tC-d50"/>
